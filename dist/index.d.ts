@@ -3,4 +3,3 @@ export * from './utils';
 export * from './errors';
 export * from './typed-map';
 export * from './typed-key';
-export * from './typed-map-key';

@@ -1,5 +1,5 @@
 import { TypedMap } from '../typed-map';
-import { TypedMapKey } from '../typed-map-key';
+import { TypedMapKey } from '../typed-map';
 /**
  * Value not found error.
  */

@@ -1,6 +1,19 @@
+import {Constructor} from './types';
+import {TypedKey} from './typed-key';
 import {NamedMap} from './named-map';
 import {KeyNotFoundError} from './errors';
-import {TypedMapKey} from './typed-map-key';
+
+/**
+ * Typed key or any.
+ */
+export type TypedMapKey<T = unknown> =
+  | TypedKey<T>
+  | Constructor<T>
+  | string
+  | symbol
+  | number
+  | boolean
+  | object;
 
 /**
  * Typed map.
