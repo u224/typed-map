@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TypedMap = void 0;
-const key_not_found_error_1 = require("./key-not-found-error");
+const named_map_1 = require("./named-map");
+const errors_1 = require("./errors");
 /**
  * Typed map.
  */
-class TypedMap extends Map {
+class TypedMap extends named_map_1.NamedMap {
     /**
      * Get.
      *
@@ -13,7 +14,7 @@ class TypedMap extends Map {
      */
     get(key) {
         if (!super.has(key))
-            throw new key_not_found_error_1.KeyNotFoundError(this, key);
+            throw new errors_1.KeyNotFoundError(this, key);
         return super.get(key);
     }
     /**

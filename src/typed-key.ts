@@ -1,3 +1,5 @@
+import {namedInstanceToString} from './utils';
+
 /**
  * Typed key.
  */
@@ -37,8 +39,6 @@ export class TypedKey<T> {
    * To string.
    */
   toString(): string {
-    return this.name
-      ? this.constructor.name + `(${this.name})`
-      : this.constructor.name;
+    return namedInstanceToString(this);
   }
 }

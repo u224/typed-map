@@ -1,17 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypedKey = void 0;
+exports.NamedMap = void 0;
 const utils_1 = require("./utils");
 /**
- * Typed key.
+ * Named map.
  */
-class TypedKey {
+class NamedMap extends Map {
     /**
      * Constructor.
      *
      * @param name
+     * @param entries
      */
-    constructor(name) {
+    constructor(name, entries) {
+        if (typeof name === 'object') {
+            entries = name;
+            name = undefined;
+        }
+        super(entries);
         this.name = name;
     }
     /**
@@ -21,5 +27,5 @@ class TypedKey {
         return (0, utils_1.namedInstanceToString)(this);
     }
 }
-exports.TypedKey = TypedKey;
-//# sourceMappingURL=typed-key.js.map
+exports.NamedMap = NamedMap;
+//# sourceMappingURL=named-map.js.map

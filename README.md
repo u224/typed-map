@@ -24,9 +24,9 @@ Value binding by the `TypedKey<T>`
 import {TypedMap} from '@u224/typed-map';
 import {TypedKey} from '@u224/typed-map';
 
-// Create the map and typed key of a string value.
-const map = new TypedMap();
-const key = new TypedKey<string>('debugName');
+// Create a map and typed key of a string value.
+const map = new TypedMap('debugMapName');
+const key = new TypedKey<string>('debugKeyName');
 
 // Bind the typed key to a string value.
 // `set` method checks value type by the given key.
@@ -37,7 +37,7 @@ map.set(key, 'myValue');
 map.set(key, 10);
 
 // Return type of the `get` method will be
-// inferred automatically by the given key.
+// inferred automatically as a string.
 const value = map.get(key);
 ```
 
@@ -55,6 +55,11 @@ map.set(MyService, 'aString');
 
 // Return value will be inferred as MyService.
 const value = map.get(MyService);
+```
+
+Do use `has` method to check key existence.
+```ts
+const isExist = map.has(key); // boolean
 ```
 
 ## Testing

@@ -1,4 +1,6 @@
 export * from './types';
+export * from './utils';
+export * from './errors';
 export * from './typed-map';
 export * from './typed-key';
-export * from './key-not-found-error';
+export * from './typed-map-key';

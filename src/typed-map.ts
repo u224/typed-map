@@ -1,18 +1,6 @@
-import {Constructor} from './types';
-import {TypedKey} from './typed-key';
-import {KeyNotFoundError} from './key-not-found-error';
-
-/**
- * Typed key or any.
- */
-export type TypedMapKey<T = unknown> =
-  | TypedKey<T>
-  | Constructor<T>
-  | string
-  | symbol
-  | number
-  | boolean
-  | object;
+import {NamedMap} from './named-map';
+import {KeyNotFoundError} from './errors';
+import {TypedMapKey} from './typed-map-key';
 
 /**
  * Typed map.
@@ -20,7 +8,7 @@ export type TypedMapKey<T = unknown> =
 export class TypedMap<
   K extends TypedMapKey<V> = TypedMapKey,
   V = unknown,
-> extends Map<unknown, unknown> {
+> extends NamedMap<unknown, unknown> {
   /**
    * Get.
    *
