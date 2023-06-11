@@ -8,4 +8,4 @@ export interface Constructor<T = unknown> {
 /**
  * Map entries.
  */
-export declare type MapEntries<K, V> = [K, V][];
+export type MapEntries<K, V> = [K, V][];

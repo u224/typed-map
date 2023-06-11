@@ -1,7 +1,7 @@
 /**
  * Instance.
  */
-declare type Instance = {
+type Instance = {
     constructor: {
         name: string;
     };

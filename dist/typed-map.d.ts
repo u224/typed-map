@@ -4,7 +4,7 @@ import { NamedMap } from './named-map';
 /**
  * Typed key or any.
  */
-export declare type TypedMapKey<T = unknown> = TypedKey<T> | Constructor<T> | string | symbol | number | boolean | object;
+export type TypedMapKey<T = unknown> = TypedKey<T> | Constructor<T> | string | symbol | number | boolean | object;
 /**
  * Typed map.
  */
