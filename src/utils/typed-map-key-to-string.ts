@@ -24,5 +24,5 @@ export function typedMapKeyToString<T>(key: TypedMapKey<T>): string {
   ) {
     return key.constructor.name;
   }
-  return String(key);
+  return 'Object';
 }

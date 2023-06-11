@@ -25,7 +25,13 @@ export declare class TypedKey<T> {
      * );
      * ```
      */
-    protected _?: T;
+    protected _fixUnusedGeneric?: T;
+    /**
+     * Fix structural typing.
+     *
+     * @protected
+     */
+    protected _fixStructuralTyping: "typed-key";
     /**
      * Constructor.
      *

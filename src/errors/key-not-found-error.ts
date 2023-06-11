@@ -6,7 +6,7 @@ import {typedMapKeyToString} from '../utils';
 /**
  * Value not found error.
  */
-export class KeyNotFoundError<T, V> extends Error {
+export class KeyNotFoundError<T extends TypedMapKey<T>, V> extends Error {
   /**
    * Constructor.
    *

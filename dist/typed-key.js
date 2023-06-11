@@ -13,6 +13,12 @@ class TypedKey {
      */
     constructor(name) {
         this.name = name;
+        /**
+         * Fix structural typing.
+         *
+         * @protected
+         */
+        this._fixStructuralTyping = 'typed-key';
     }
     /**
      * To string.

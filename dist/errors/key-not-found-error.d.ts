@@ -3,7 +3,7 @@ import { TypedMapKey } from '../typed-map';
 /**
  * Value not found error.
  */
-export declare class KeyNotFoundError<T, V> extends Error {
+export declare class KeyNotFoundError<T extends TypedMapKey<T>, V> extends Error {
     /**
      * Constructor.
      *

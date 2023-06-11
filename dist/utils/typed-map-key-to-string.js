@@ -28,7 +28,7 @@ function typedMapKeyToString(key) {
         key.constructor.name) {
         return key.constructor.name;
     }
-    return String(key);
+    return 'Object';
 }
 exports.typedMapKeyToString = typedMapKeyToString;
 //# sourceMappingURL=typed-map-key-to-string.js.map
