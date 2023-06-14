@@ -30,7 +30,8 @@ export class TypedMap<
   get<T>(
     key: TypedMapKey<T> extends K ? TypedMapKey<T> : K,
   ): T extends V ? T : never {
-    if (!super.has(key)) throw new KeyNotFoundError(this, key);
+    if (!super.has(key))
+      throw new KeyNotFoundError(this, key);
     return super.get(key) as T extends V ? T : never;
   }
 

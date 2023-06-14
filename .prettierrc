@@ -1,7 +1,15 @@
 {
   "bracketSpacing": false,
   "singleQuote": true,
-  "printWidth": 80,
+  "printWidth": 60,
   "trailingComma": "all",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": ["tests/**/*.ts"],
+      "options": {
+        "printWidth": 90
+      }
+    }
+  ]
 }

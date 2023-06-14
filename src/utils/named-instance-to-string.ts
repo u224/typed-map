@@ -11,7 +11,9 @@ type Instance = {
  *
  * @param instance
  */
-export function namedInstanceToString(instance: Instance): string {
+export function namedInstanceToString(
+  instance: Instance,
+): string {
   return instance.name
     ? instance.constructor.name + `(${instance.name})`
     : instance.constructor.name;

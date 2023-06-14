@@ -16,7 +16,10 @@ export class NamedMap<T, V> extends Map<T, V> {
    * @param name
    * @param entries
    */
-  constructor(name?: string | MapEntries<T, V>, entries?: MapEntries<T, V>) {
+  constructor(
+    name?: string | MapEntries<T, V>,
+    entries?: MapEntries<T, V>,
+  ) {
     if (typeof name === 'object') {
       entries = name;
       name = undefined;

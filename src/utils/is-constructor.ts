@@ -5,7 +5,9 @@ import {Constructor} from '../types';
  *
  * @param value
  */
-export function isConstructor<T>(value: unknown): value is Constructor<T> {
+export function isConstructor<T>(
+  value: unknown,
+): value is Constructor<T> {
   try {
     new (value as Constructor)();
   } catch (error) {

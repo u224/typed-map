@@ -6,7 +6,10 @@ import {typedMapKeyToString} from '../utils';
 /**
  * Value not found error.
  */
-export class KeyNotFoundError<T extends TypedMapKey<T>, V> extends Error {
+export class KeyNotFoundError<
+  T extends TypedMapKey<T>,
+  V,
+> extends Error {
   /**
    * Constructor.
    *
@@ -15,7 +18,11 @@ export class KeyNotFoundError<T extends TypedMapKey<T>, V> extends Error {
    */
   constructor(map: TypedMap<T, V>, key: TypedMapKey<V>) {
     super(
-      format('%s is not found in %s.', typedMapKeyToString(key), String(map)),
+      format(
+        '%s is not found in %s.',
+        typedMapKeyToString(key),
+        String(map),
+      ),
     );
   }
 }

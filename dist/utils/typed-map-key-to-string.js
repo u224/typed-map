@@ -20,7 +20,9 @@ function typedMapKeyToString(key) {
     if (typeof key === 'boolean')
         return `Boolean(${key})`;
     if (typeof key === 'symbol') {
-        return key.description ? `Symbol(${key.description})` : 'Symbol';
+        return key.description
+            ? `Symbol(${key.description})`
+            : 'Symbol';
     }
     if (key != null &&
         typeof key === 'object' &&
