@@ -1,6 +1,6 @@
 {
   "name": "@u224/typed-map",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A typed wrapper of the TypeScript Map.",
   "author": "Mike Evstropov <mike.evstropov@gmail.com>",
   "keywords": [
