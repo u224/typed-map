@@ -248,103 +248,171 @@ describe('TypedMap', () => {
     });
 
     describe('constructor', () => {
-      it('allows to specify generic type for a map key and its value', () => {
-        // TypedMap<unknown, unknown>
-        const uuMap = new TypedMap();
-        uuMap.set(STRING_KEY, STRING_VAL);
-        uuMap.set(SYMBOL_KEY, STRING_VAL);
-        uuMap.set(NUMBER_KEY, STRING_VAL);
-        uuMap.set(BOOLEAN_KEY, STRING_VAL);
-        uuMap.set(OBJECT_KEY, STRING_VAL);
-        uuMap.set(TYPED_UNKNOWN_KEY, STRING_VAL);
-        uuMap.set(TYPED_STRING_KEY, STRING_VAL);
-        uuMap.set(TYPED_NUMBER_KEY, NUMBER_VAL);
-        uuMap.set(TYPED_BOOLEAN_KEY, BOOLEAN_VAL);
-        uuMap.set(TYPED_OBJECT_KEY, OBJECT_VAL);
-        uuMap.set(TYPED_LITERAL_KEY, LITERAL_VAL);
-        uuMap.set(TYPED_INSTANCE_KEY, INSTANCE_VAL);
-        uuMap.set(TYPED_FUNCTION_KEY, FUNCTION_VAL);
-        uuMap.set(TYPED_STR_OR_UNDEF_KEY, UNDEFINED_VAL);
-        uuMap.set(TYPED_STR_OR_UNDEF_KEY, STRING_VAL);
-        const uuVal01: unknown = uuMap.get(STRING_KEY);
-        const uuVal02: unknown = uuMap.get(SYMBOL_KEY);
-        const uuVal03: unknown = uuMap.get(NUMBER_KEY);
-        const uuVal04: unknown = uuMap.get(BOOLEAN_KEY);
-        const uuVal05: unknown = uuMap.get(OBJECT_KEY);
-        const uuVal06: unknown = uuMap.get(TYPED_UNKNOWN_KEY);
-        const uuVal07: string = uuMap.get(TYPED_STRING_KEY);
-        const uuVal08: number = uuMap.get(TYPED_NUMBER_KEY);
-        const uuVal09: boolean = uuMap.get(TYPED_BOOLEAN_KEY);
-        const uuVal10: {key: string} = uuMap.get(TYPED_OBJECT_KEY);
-        const uuVal11: typeof LITERAL_VAL = uuMap.get(TYPED_LITERAL_KEY);
-        const uuVal12: DummyClass = uuMap.get(TYPED_INSTANCE_KEY);
-        const uuVal13: typeof FUNCTION_VAL = uuMap.get(TYPED_FUNCTION_KEY);
-        const uuVal14: string | undefined = uuMap.get(TYPED_STR_OR_UNDEF_KEY);
-        // TypedMap<string, unknown>
-        const suMap = new TypedMap<string, unknown>();
-        suMap.set(STRING_KEY, STRING_VAL);
-        const suVal: unknown = suMap.get(STRING_KEY);
-        // TypedMap<symbol, unknown>
-        const syuMap = new TypedMap<symbol, unknown>();
-        syuMap.set(SYMBOL_KEY, STRING_VAL);
-        const syuVal: unknown = syuMap.get(SYMBOL_KEY);
-        // TypedMap<number, unknown>
-        const nuMap = new TypedMap<number, unknown>();
-        nuMap.set(NUMBER_KEY, STRING_VAL);
-        const nuVal: unknown = nuMap.get(NUMBER_KEY);
-        // TypedMap<boolean, unknown>
-        const buMap = new TypedMap<boolean, unknown>();
-        buMap.set(BOOLEAN_KEY, STRING_VAL);
-        const buVal: unknown = buMap.get(BOOLEAN_KEY);
-        // TypedMap<object, unknown>
-        const ouMap = new TypedMap<object, unknown>();
-        ouMap.set(OBJECT_KEY, STRING_VAL);
-        const ouVal: unknown = ouMap.get(OBJECT_KEY);
-        // TypedMap<TypedKey<unknown>, unknown>
-        const tuuMap = new TypedMap<typeof TYPED_UNKNOWN_KEY, unknown>();
-        tuuMap.set(TYPED_UNKNOWN_KEY, STRING_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, NUMBER_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, BOOLEAN_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, OBJECT_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, LITERAL_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, INSTANCE_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, FUNCTION_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, UNDEFINED_VAL);
-        tuuMap.set(TYPED_UNKNOWN_KEY, STRING_VAL);
-        const tuuVal: unknown = uuMap.get(TYPED_UNKNOWN_KEY);
-        // TypedMap<TypedKey<string>, string>
-        const tssMap = new TypedMap<typeof TYPED_STRING_KEY, string>();
-        tssMap.set(TYPED_STRING_KEY, STRING_VAL);
-        const tssVal: string = uuMap.get(TYPED_STRING_KEY);
-        // TypedMap<TypedKey<string>, string>
-        const tnnMap = new TypedMap<typeof TYPED_NUMBER_KEY, number>();
-        tnnMap.set(TYPED_NUMBER_KEY, NUMBER_VAL);
-        const tnnVal: number = tnnMap.get(TYPED_NUMBER_KEY);
-        // TypedMap<TypedKey<boolean>, boolean>
-        const tbbMap = new TypedMap<typeof TYPED_BOOLEAN_KEY, boolean>();
-        tbbMap.set(TYPED_BOOLEAN_KEY, BOOLEAN_VAL);
-        const tbbVal: boolean = tbbMap.get(TYPED_BOOLEAN_KEY);
-        // TypedMap<TypedKey<{key: string}>, {key: string}>
-        const tooMap = new TypedMap<typeof TYPED_OBJECT_KEY, typeof OBJECT_VAL>();
-        tooMap.set(TYPED_OBJECT_KEY, OBJECT_VAL);
-        const tooVal: typeof OBJECT_VAL = tooMap.get(TYPED_OBJECT_KEY);
-        // TypedMap<TypedKey<'literal'>, 'literal'>
-        const tllMap = new TypedMap<typeof TYPED_LITERAL_KEY, typeof LITERAL_VAL>();
-        tllMap.set(TYPED_LITERAL_KEY, LITERAL_VAL);
-        const tllVal: typeof LITERAL_VAL = tllMap.get(TYPED_LITERAL_KEY);
-        // TypedMap<TypedKey<DummyClass>, DummyClass>
-        const tiiMap = new TypedMap<typeof TYPED_INSTANCE_KEY, typeof INSTANCE_VAL>();
-        tiiMap.set(TYPED_INSTANCE_KEY, INSTANCE_VAL);
-        const tiiVal = tiiMap.get(TYPED_INSTANCE_KEY);
-        // TypedMap<TypedKey<(param: string) => string>, (param: string) => string>
-        const kffMap = new TypedMap<typeof TYPED_FUNCTION_KEY, typeof FUNCTION_VAL>();
-        kffMap.set(TYPED_FUNCTION_KEY, FUNCTION_VAL);
-        const kffVal = kffMap.get(TYPED_FUNCTION_KEY);
-        // TypedMap<string | undefined>, string | undefined>
-        const tsuMap = new TypedMap<typeof TYPED_STR_OR_UNDEF_KEY, string | undefined>();
-        tsuMap.set(TYPED_STR_OR_UNDEF_KEY, STRING_KEY);
-        tsuMap.set(TYPED_STR_OR_UNDEF_KEY, UNDEFINED_VAL);
-        const tsuVal: string | undefined = tsuMap.get(TYPED_STR_OR_UNDEF_KEY);
+      it('allows to specify type of TypedMap<unknown, unknown>', () => {
+        const map = new TypedMap();
+        map.set(STRING_KEY, STRING_VAL);
+        map.set(SYMBOL_KEY, STRING_VAL);
+        map.set(NUMBER_KEY, STRING_VAL);
+        map.set(BOOLEAN_KEY, STRING_VAL);
+        map.set(OBJECT_KEY, STRING_VAL);
+        map.set(TYPED_UNKNOWN_KEY, STRING_VAL);
+        map.set(TYPED_STRING_KEY, STRING_VAL);
+        map.set(TYPED_NUMBER_KEY, NUMBER_VAL);
+        map.set(TYPED_BOOLEAN_KEY, BOOLEAN_VAL);
+        map.set(TYPED_OBJECT_KEY, OBJECT_VAL);
+        map.set(TYPED_LITERAL_KEY, LITERAL_VAL);
+        map.set(TYPED_INSTANCE_KEY, INSTANCE_VAL);
+        map.set(TYPED_FUNCTION_KEY, FUNCTION_VAL);
+        map.set(TYPED_STR_OR_UNDEF_KEY, UNDEFINED_VAL);
+        map.set(TYPED_STR_OR_UNDEF_KEY, STRING_VAL);
+        const val01: unknown = map.get(STRING_KEY);
+        const val02: unknown = map.get(SYMBOL_KEY);
+        const val03: unknown = map.get(NUMBER_KEY);
+        const val04: unknown = map.get(BOOLEAN_KEY);
+        const val05: unknown = map.get(OBJECT_KEY);
+        const val06: unknown = map.get(TYPED_UNKNOWN_KEY);
+        const val07: string = map.get(TYPED_STRING_KEY);
+        const val08: number = map.get(TYPED_NUMBER_KEY);
+        const val09: boolean = map.get(TYPED_BOOLEAN_KEY);
+        const val10: {key: string} = map.get(TYPED_OBJECT_KEY);
+        const val11: typeof LITERAL_VAL = map.get(TYPED_LITERAL_KEY);
+        const val12: DummyClass = map.get(TYPED_INSTANCE_KEY);
+        const val13: typeof FUNCTION_VAL = map.get(TYPED_FUNCTION_KEY);
+        const val14: string | undefined = map.get(TYPED_STR_OR_UNDEF_KEY);
+      });
+
+      it('allows to specify type of TypedMap<string, unknown>', () => {
+        const map = new TypedMap<string, unknown>();
+        map.set(STRING_KEY, STRING_VAL);
+        map.set(STRING_KEY, NUMBER_VAL);
+        map.set(STRING_KEY, BOOLEAN_VAL);
+        map.set(STRING_KEY, OBJECT_VAL);
+        map.set(STRING_KEY, LITERAL_VAL);
+        map.set(STRING_KEY, INSTANCE_VAL);
+        map.set(STRING_KEY, FUNCTION_VAL);
+        map.set(STRING_KEY, UNDEFINED_VAL);
+        map.set(STRING_KEY, STRING_VAL);
+        const val: unknown = map.get(STRING_KEY);
+      });
+
+      it('allows to specify type of TypedMap<symbol, unknown>', () => {
+        const map = new TypedMap<symbol, unknown>();
+        map.set(SYMBOL_KEY, STRING_VAL);
+        map.set(SYMBOL_KEY, NUMBER_VAL);
+        map.set(SYMBOL_KEY, BOOLEAN_VAL);
+        map.set(SYMBOL_KEY, OBJECT_VAL);
+        map.set(SYMBOL_KEY, LITERAL_VAL);
+        map.set(SYMBOL_KEY, INSTANCE_VAL);
+        map.set(SYMBOL_KEY, FUNCTION_VAL);
+        map.set(SYMBOL_KEY, UNDEFINED_VAL);
+        map.set(SYMBOL_KEY, STRING_VAL);
+        const val: unknown = map.get(SYMBOL_KEY);
+      });
+
+      it('allows to specify type of TypedMap<number, unknown>', () => {
+        const map = new TypedMap<number, unknown>();
+        map.set(NUMBER_KEY, STRING_VAL);
+        map.set(NUMBER_KEY, NUMBER_VAL);
+        map.set(NUMBER_KEY, BOOLEAN_VAL);
+        map.set(NUMBER_KEY, OBJECT_VAL);
+        map.set(NUMBER_KEY, LITERAL_VAL);
+        map.set(NUMBER_KEY, INSTANCE_VAL);
+        map.set(NUMBER_KEY, FUNCTION_VAL);
+        map.set(NUMBER_KEY, UNDEFINED_VAL);
+        map.set(NUMBER_KEY, STRING_VAL);
+        const val: unknown = map.get(NUMBER_KEY);
+      });
+
+      it('allows to specify type of TypedMap<boolean, unknown>', () => {
+        const map = new TypedMap<boolean, unknown>();
+        map.set(BOOLEAN_KEY, STRING_VAL);
+        map.set(BOOLEAN_KEY, NUMBER_VAL);
+        map.set(BOOLEAN_KEY, BOOLEAN_VAL);
+        map.set(BOOLEAN_KEY, OBJECT_VAL);
+        map.set(BOOLEAN_KEY, LITERAL_VAL);
+        map.set(BOOLEAN_KEY, INSTANCE_VAL);
+        map.set(BOOLEAN_KEY, FUNCTION_VAL);
+        map.set(BOOLEAN_KEY, UNDEFINED_VAL);
+        map.set(BOOLEAN_KEY, STRING_VAL);
+        const val: unknown = map.get(BOOLEAN_KEY);
+      });
+
+      it('allows to specify type of TypedMap<object, unknown>', () => {
+        const map = new TypedMap<object, unknown>();
+        map.set(OBJECT_KEY, STRING_VAL);
+        map.set(OBJECT_KEY, NUMBER_VAL);
+        map.set(OBJECT_KEY, BOOLEAN_VAL);
+        map.set(OBJECT_KEY, OBJECT_VAL);
+        map.set(OBJECT_KEY, LITERAL_VAL);
+        map.set(OBJECT_KEY, INSTANCE_VAL);
+        map.set(OBJECT_KEY, FUNCTION_VAL);
+        map.set(OBJECT_KEY, UNDEFINED_VAL);
+        map.set(OBJECT_KEY, STRING_VAL);
+        const val: unknown = map.get(OBJECT_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<unknown>, unknown>', () => {
+        const map = new TypedMap<typeof TYPED_UNKNOWN_KEY, unknown>();
+        map.set(TYPED_UNKNOWN_KEY, STRING_VAL);
+        map.set(TYPED_UNKNOWN_KEY, NUMBER_VAL);
+        map.set(TYPED_UNKNOWN_KEY, BOOLEAN_VAL);
+        map.set(TYPED_UNKNOWN_KEY, OBJECT_VAL);
+        map.set(TYPED_UNKNOWN_KEY, LITERAL_VAL);
+        map.set(TYPED_UNKNOWN_KEY, INSTANCE_VAL);
+        map.set(TYPED_UNKNOWN_KEY, FUNCTION_VAL);
+        map.set(TYPED_UNKNOWN_KEY, UNDEFINED_VAL);
+        map.set(TYPED_UNKNOWN_KEY, STRING_VAL);
+        const val: unknown = map.get(TYPED_UNKNOWN_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<string>, string>', () => {
+        const map = new TypedMap<typeof TYPED_STRING_KEY, string>();
+        map.set(TYPED_STRING_KEY, STRING_VAL);
+        map.set(TYPED_STRING_KEY, LITERAL_VAL);
+        const val: string = map.get(TYPED_STRING_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<number>, string>', () => {
+        const map = new TypedMap<typeof TYPED_NUMBER_KEY, number>();
+        map.set(TYPED_NUMBER_KEY, NUMBER_VAL);
+        const val: number = map.get(TYPED_NUMBER_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<boolean>, boolean>', () => {
+        const map = new TypedMap<typeof TYPED_BOOLEAN_KEY, boolean>();
+        map.set(TYPED_BOOLEAN_KEY, BOOLEAN_VAL);
+        const val: boolean = map.get(TYPED_BOOLEAN_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<object>, object>', () => {
+        const map = new TypedMap<typeof TYPED_OBJECT_KEY, typeof OBJECT_VAL>();
+        map.set(TYPED_OBJECT_KEY, OBJECT_VAL);
+        const val: typeof OBJECT_VAL = map.get(TYPED_OBJECT_KEY);
+      });
+
+      it("allows to specify type of TypedMap<TypedKey<'literal'>, 'literal'>", () => {
+        const map = new TypedMap<typeof TYPED_LITERAL_KEY, typeof LITERAL_VAL>();
+        map.set(TYPED_LITERAL_KEY, LITERAL_VAL);
+        const val: typeof LITERAL_VAL = map.get(TYPED_LITERAL_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<DummyClass>, DummyClass>', () => {
+        const map = new TypedMap<typeof TYPED_INSTANCE_KEY, typeof INSTANCE_VAL>();
+        map.set(TYPED_INSTANCE_KEY, INSTANCE_VAL);
+        const val = map.get(TYPED_INSTANCE_KEY);
+      });
+
+      it('allows to specify type of TypedMap<TypedKey<Function>, Function>', () => {
+        const map = new TypedMap<typeof TYPED_FUNCTION_KEY, typeof FUNCTION_VAL>();
+        map.set(TYPED_FUNCTION_KEY, FUNCTION_VAL);
+        const val = map.get(TYPED_FUNCTION_KEY);
+      });
+
+      it('allows to specify type of TypedMap<string | undefined>, string | undefined>', () => {
+        const map = new TypedMap<typeof TYPED_STR_OR_UNDEF_KEY, string | undefined>();
+        map.set(TYPED_STR_OR_UNDEF_KEY, STRING_KEY);
+        map.set(TYPED_STR_OR_UNDEF_KEY, UNDEFINED_VAL);
+        const val: string | undefined = map.get(TYPED_STR_OR_UNDEF_KEY);
       });
     });
   });

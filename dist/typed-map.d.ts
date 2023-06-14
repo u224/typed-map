@@ -14,18 +14,18 @@ export declare class TypedMap<K extends TypedMapKey<V> = TypedMapKey, V = unknow
      *
      * @param key
      */
-    get<T>(key: TypedMapKey<T> extends K ? TypedMapKey<T> : K): T extends V ? T : never;
+    get<T extends V>(key: TypedMapKey<T> & K): T;
     /**
      * Has.
      *
      * @param key
      */
-    has<T>(key: TypedMapKey<T> extends K ? TypedMapKey<T> : K): T extends V ? boolean : false;
+    has<T extends V>(key: TypedMapKey<T> & K): boolean;
     /**
      * Set.
      *
      * @param key
      * @param value
      */
-    set<T>(key: TypedMapKey<T> extends K ? TypedMapKey<T> : K, value: T extends V ? T : V): this;
+    set<T extends V>(key: TypedMapKey<T> & K, value: T): this;
 }

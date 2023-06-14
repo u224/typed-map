@@ -3,12 +3,12 @@ import { TypedMapKey } from '../typed-map';
 /**
  * Value not found error.
  */
-export declare class KeyNotFoundError<T extends TypedMapKey<T>, V> extends Error {
+export declare class KeyNotFoundError extends Error {
     /**
      * Constructor.
      *
      * @param map
      * @param key
      */
-    constructor(map: TypedMap<T, V>, key: TypedMapKey<V>);
+    constructor(map: TypedMap, key: TypedMapKey);
 }

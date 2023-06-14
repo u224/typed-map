@@ -27,9 +27,7 @@ export class TypedMap<
    *
    * @param key
    */
-  get<T>(
-    key: TypedMapKey<T> extends K ? TypedMapKey<T> : K,
-  ): T extends V ? T : never {
+  get<T extends V>(key: TypedMapKey<T> & K): T {
     if (!super.has(key))
       throw new KeyNotFoundError(this, key);
     return super.get(key) as T extends V ? T : never;
@@ -40,9 +38,7 @@ export class TypedMap<
    *
    * @param key
    */
-  has<T>(
-    key: TypedMapKey<T> extends K ? TypedMapKey<T> : K,
-  ): T extends V ? boolean : false {
+  has<T extends V>(key: TypedMapKey<T> & K): boolean {
     return super.has(key) as T extends V ? boolean : false;
   }
 
@@ -52,9 +48,9 @@ export class TypedMap<
    * @param key
    * @param value
    */
-  set<T>(
-    key: TypedMapKey<T> extends K ? TypedMapKey<T> : K,
-    value: T extends V ? T : V,
+  set<T extends V>(
+    key: TypedMapKey<T> & K,
+    value: T,
   ): this {
     super.set(key, value);
     return this;
