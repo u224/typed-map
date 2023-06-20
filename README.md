@@ -5,7 +5,7 @@ A typed wrapper of the TypeScript Map.
 ## Overview
 
 This library provides `TypedMap` and `TypedKey` classes:
-- `TypedMap<K, V>` extends builtin `Map<K, V>` with special behaviour;
+- `TypedMap<K, V>` extends builtin `Map<K, V>` with custom behaviour;
 - `get` method throws `KeyNotFoundError` if a given key doesn't exist;
 - `get` method returns `T` instead of `T | undefined`;
 - `get` method returns `T` if a given key is `TypedKey<T>` or `Constructor<T>`;
