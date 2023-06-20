@@ -55,7 +55,7 @@ map.set(MyService, new MyService());
 // assignable to parameter of type 'MyService'.
 map.set(MyService, 'aString');
 
-// Return value will be inferred as MyService.
+// Return value will be inferred as `MyService`.
 const value = map.get(MyService);
 ```
 
