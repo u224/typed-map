@@ -24,7 +24,7 @@ Value binding by the `TypedKey<T>`
 import {TypedMap} from '@u224/typed-map';
 import {TypedKey} from '@u224/typed-map';
 
-// Create a map and typed key of a string value.
+// Create a map and key of a string.
 const map = new TypedMap();
 const key = new TypedKey<string>();
 
