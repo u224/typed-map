@@ -25,8 +25,8 @@ import {TypedMap} from '@u224/typed-map';
 import {TypedKey} from '@u224/typed-map';
 
 // Create a map and typed key of a string value.
-const map = new TypedMap('debugMapName');
-const key = new TypedKey<string>('debugKeyName');
+const map = new TypedMap();
+const key = new TypedKey<string>();
 
 // Bind the typed key to a string value.
 // `set` method checks value type by the given key.
