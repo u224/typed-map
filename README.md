@@ -26,6 +26,7 @@ import {TypedKey} from '@u224/typed-map';
 
 // Create a new `TypedMap`
 const map = new TypedMap();
+
 // and `TypedKey<T>` of a string.
 const key = new TypedKey<string>();
 
