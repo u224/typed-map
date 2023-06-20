@@ -8,8 +8,8 @@ This library provides `TypedMap` and `TypedKey` classes:
 - `TypedMap<K, V>` extends builtin `Map<K, V>` with special behaviour;
 - `get` method throws `KeyNotFoundError` if a given key doesn't exist;
 - `get` method returns `T` instead of `T | undefined`;
-- `set` method expects `T` if a given key is `TypedKey<T>` or `Constructor<T>`;
 - `get` method returns `T` if a given key is `TypedKey<T>` or `Constructor<T>`;
+- `set` method expects `T` if a given key is `TypedKey<T>` or `Constructor<T>`;
 
 ## Installation
 
