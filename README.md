@@ -1,4 +1,4 @@
-# @u224/typed-map
+# typed-map
 
 A typed wrapper of the TypeScript Map.
 
